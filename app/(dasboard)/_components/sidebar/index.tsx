@@ -1,4 +1,4 @@
-import { NewButton } from "./bew-button";
+import { NewButton } from "./new-button";
 import { List } from "./list";
 
 const Sidebar = () => {
