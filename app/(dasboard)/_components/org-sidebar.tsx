@@ -47,9 +47,9 @@ const OrgSidebar = () => {
           },
         }}
       />
-      <div className="space-y-1 w-full ">
+      <div className="space-y-1 w-full pr-[16px]">
         <Button
-          variant={favorites ? "ghost" : "secondary"}
+          variant={favorites ? "outline" : "secondary"}
           asChild
           size={"lg"}
           className="font-normal justify-start px-2 w-full"
@@ -60,7 +60,7 @@ const OrgSidebar = () => {
           </Link>
         </Button>
         <Button
-          variant="ghost"
+          variant={favorites ? "secondary" : "outline"}
           asChild
           size={"lg"}
           className="font-normal justify-start px-2 w-full"
