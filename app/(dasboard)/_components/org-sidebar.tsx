@@ -14,7 +14,7 @@ const font = Poppins({
 });
 const OrgSidebar = () => {
   const SearchParams = useSearchParams();
-  const favorites = SearchParams.get("favorite");
+  const favorites = SearchParams.get("favorites");
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-6">
       <Link href="/">
@@ -68,7 +68,7 @@ const OrgSidebar = () => {
           <Link
             href={{
               pathname: "/",
-              query: { favorite: "true" },
+              query: { favorites: "true" },
             }}
           >
             <Star className="h-4 w-4 mr-2" />
