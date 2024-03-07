@@ -1,3 +1,4 @@
+"use client";
 import { useMutation } from "convex/react";
 import { useOrganization } from "@clerk/nextjs";
 import { api } from "@/convex/_generated/api";

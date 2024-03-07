@@ -23,7 +23,7 @@ export const create = mutation({
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
-      throw new Error("unauthorized");
+      throw new Error("Not authenticated");
     }
 
     const randomImage = images[Math.floor(Math.random() * images.length)];
@@ -35,6 +35,8 @@ export const create = mutation({
       authorName: identity.name!,
       imageUrl: randomImage,
     });
+    console.log(board);
+
     return board;
   },
 });
