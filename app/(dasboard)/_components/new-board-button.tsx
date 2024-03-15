@@ -1,6 +1,9 @@
 "use client";
-
+import { toast } from "sonner";
+import { api } from "@/convex/_generated/api";
+import { useApiMutation } from "@/hooks/us-api-mutation";
 import { cn } from "@/lib/utils";
+import { Plus } from "lucide-react";
 
 interface NewBoardButtonProps {
   orgId: string;
@@ -8,15 +11,32 @@ interface NewBoardButtonProps {
 }
 
 export const NewBoardButton = ({ orgId, disabled }: NewBoardButtonProps) => {
+  const { mutate, pending } = useApiMutation(api.board.create);
+  const onClick = () => {
+    mutate({
+      orgId,
+      title: "utitled",
+    })
+      .then((id) => {
+        toast.success("Board created");
+        // TODO: Redirec to /board/{id}
+      })
+      .catch(() => toast.error("Failed  to  create Board"));
+  };
+
   return (
     <button
-      disabled={disabled}
-      onClick={() => {}}
+      disabled={pending || disabled}
+      onClick={onClick}
       className={cn(
-        "col-span-1 aspect-[100/127] bg-blue-600 rounded-lg hover:bg-blue-800 flex flex-col justify-center items-center"
+        "col-span-1 aspect-[100/127] bg-blue-600 rounded-lg hover:bg-blue-800 flex flex-col justify-center items-center py-6 ",
+        (pending || disabled) &&
+          "opacity-75 hover:bg-blue-600 cursor-not-allowed"
       )}
     >
-      new button
+      <div />
+      <Plus className="h-12 w-12 text-white stroke-1" />
+      <p className="text-sm text-white font-light">New board</p>
     </button>
   );
 };
